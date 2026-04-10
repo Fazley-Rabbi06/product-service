@@ -1,0 +1,40 @@
+### Get all products
+GET http://localhost:8080/api/v1/products
+Accept: application/json
+
+###
+
+### Get product by ID
+GET http://localhost:8080/api/v1/products/1
+Accept: application/json
+
+###
+
+### Create a new product
+POST http://localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "productName": "MacBook Air",
+  "productPrice": 115000,
+  "quantity": 25
+}
+
+###
+
+### Update an existing product
+PUT http://localhost:8080/api/v1/products/1
+Content-Type: application/json
+
+{
+  "productName": "Updated Product",
+  "productPrice": 200,
+  "quantity": 30
+}
+
+###
+
+### Delete a product
+DELETE http://localhost:8080/api/v1/products/1
+
+###
