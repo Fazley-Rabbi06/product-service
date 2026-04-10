@@ -1,3 +1,37 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: product-service
+
+  datasource:
+    # Use environment variables for production credentials
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/product_db}
+    username: ${DB_USERNAME:fazleyrabbi06r}
+    password: ${DB_PASSWORD:rabbi1998}
+    driver-class-name: org.postgresql.Driver
+
+    # HikariCP connection pool configuration
+    hikari:
+      maximum-pool-size: 20          # Adjust based on server/DB capacity
+      minimum-idle: 5
+      idle-timeout: 30000            # 30 seconds
+      max-lifetime: 1800000          # 30 minutes
+      connection-timeout: 30000      # 30 seconds
+
+  jpa:
+    hibernate:
+      ddl-auto: update             # Validate schema, do not auto-update in prod
+    show-sql: false                  # Disable logging SQL in production
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc.lob.non_contextual_creation: true
+
+
+# Logging configuration
+logging:
+  level:
+    org.springframework: INFO
+    com.brainstormtech.productservice: DEBUG  # Adjust for your package
